@@ -24,27 +24,27 @@ class RecipeViewController: UIViewController {
         registerCells()
         
         
-//        AF.request("https://api.spoonacular.com/recipes/random?number=5&apiKey=01e98ad13e1b4f179f0761ad99eb6449").responseDecodable(of: RecipesModelRealm.self) { response in
-//            guard let result = response.value else {
-//                print(response.error ?? "")
-//                return
-//            }
-//            self.recipesModelRealm = result
-//            self.addRecipesToRealm(self.recipesModelRealm)
-//
-//            self.collectionView.reloadData()
-//        }
+        AF.request("https://api.spoonacular.com/recipes/random?number=5&apiKey=01e98ad13e1b4f179f0761ad99eb6449").responseDecodable(of: RecipesModelRealm.self) { response in
+            guard let result = response.value else {
+                print(response.error ?? "")
+                return
+            }
+            self.recipesModelRealm = result
+            RealmService().addRecipesToRealm(self.recipesModelRealm)
+
+            self.collectionView.reloadData()
+        }
         
         
-//        AF.request("https://api.spoonacular.com/food/menuItems/search?apiKey=01e98ad13e1b4f179f0761ad99eb6449&query=burger&number=5").responseDecodable(of: MenuItemsModel.self) { response in
-//            guard let result = response.value else {
-//                print(response.error ?? "")
-//                return
-//            }
-//            self.menuItemModel = result
-//            self.addMenuItemsToRealm(self.menuItemModel)
-//            self.tableView.reloadData()
-//        }
+        AF.request("https://api.spoonacular.com/food/menuItems/search?apiKey=01e98ad13e1b4f179f0761ad99eb6449&query=burger&number=5").responseDecodable(of: MenuItemsModel.self) { response in
+            guard let result = response.value else {
+                print(response.error ?? "")
+                return
+            }
+            self.menuItemModel = result
+            RealmService().addMenuItemsToRealm(self.menuItemModel)
+            self.tableView.reloadData()
+        }
         
         self.arrayOfRecipesCollection = RealmService().getArrayOfRecipesFromFirstRealmObject()
         self.arrayOfMenuItems = RealmService().getArrayOfMenuItemsFromFirstRealmObject()
