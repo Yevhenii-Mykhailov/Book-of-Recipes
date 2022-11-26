@@ -23,7 +23,7 @@ class RecipeViewController: UIViewController {
         super.viewDidLoad()
         registerCells()
         
-        
+        //TODO: First start of app did not call request (or did not store and get items from Realm)
         AF.request("https://api.spoonacular.com/recipes/random?number=5&apiKey=01e98ad13e1b4f179f0761ad99eb6449").responseDecodable(of: RecipesModelRealm.self) { response in
             guard let result = response.value else {
                 print(response.error ?? "")

@@ -12,6 +12,7 @@ class FavoritesViewController: UIViewController {
     let menuItemTableViewCellIdentifier = "MenuItemTableViewCell"
     var arrayOfMenuItems: [MenuItem] = []
     
+    //TODO: If arrayOfMenuItems is empty = show lable that no items
     override func viewDidLoad() {
         super.viewDidLoad()
         self.registerCells()
@@ -21,8 +22,6 @@ class FavoritesViewController: UIViewController {
         self.arrayOfMenuItems = getFavorites()
         tableView.reloadData()
     }
-    
-    
     
     
     func getFavorites() -> [MenuItem] {
